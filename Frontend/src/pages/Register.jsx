@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const Register = () => {
   const [form, setForm] = useState({
     userName: '',
@@ -20,7 +22,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/api/auth/register', form, {
+      await axios.post(`${BASE_URL}/api/auth/register`, form, {
         headers: {
           'Content-Type': 'application/json',
         },
