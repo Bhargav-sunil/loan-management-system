@@ -28,6 +28,12 @@ const Register = () => {
         },
       });
       alert("User Register Successfully")
+      setForm({
+        userName: '',
+        email: '',
+        password: '',
+        role: 'user',
+      })
       navigate('/');
     } catch (err) {
       setError('Registration failed');
