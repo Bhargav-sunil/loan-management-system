@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import './UserDashboard.css';
+import './userDashboard.css';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
