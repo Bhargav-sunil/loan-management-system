@@ -24,6 +24,14 @@ const ApplyForm = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
     alert('Loan application submitted');
+    setForm({
+        userName: userName || '',
+        loanAmount: '',
+        loanTenure: '',
+        reason: '',
+        employmentStatus: '',
+        employmentAddress: '',
+      });
   };
 
   return (
