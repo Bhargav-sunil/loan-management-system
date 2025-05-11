@@ -5,13 +5,15 @@ import MonthlyOutstandingBarChart from '../components/MonthlyOutstandingBarChart
 import Sidebar from '../components/Sidebar';
 import './VerifierDashboard.css';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const VerifierDashboard = () => {
   const { token,userName } = useAuth();
   const [loans, setLoans] = useState([]);
 
   const fetchPending = () => {
     axios
-      .get('http://localhost:4000/api/loans/pending', {
+      .get(`${BASE_URL}/api/loans/pending`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setLoans(res.data));
@@ -21,7 +23,7 @@ const VerifierDashboard = () => {
 
   const updateStatus = async (id, status) => {
     await axios.patch(
-      `http://localhost:4000/api/loans/update/${id}`,
+      `${BASE_URL}/api/loans/update/${id}`,
       { status },
       {
         headers: { Authorization: `Bearer ${token}` },
