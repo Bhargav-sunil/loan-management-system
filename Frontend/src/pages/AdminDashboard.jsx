@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 
 const COLORS = ['#ffca28', '#66bb6a', '#ef5350'];
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const AdminDashboard = () => {
   const { token,userName } = useAuth();
@@ -14,7 +15,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/loans/admin', {
+      .get(`${BASE_URL}/api/loans/admin`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setLoans(res.data));
