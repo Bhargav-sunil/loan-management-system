@@ -18,6 +18,9 @@ const Login = () => {
     try {
       const res = await axios.post(`${BASE_URL}/api/auth/login`, { email, password });
       login(res.data.token, res.data.role, res.data.userName);
+      alert("Login Successful")
+      setEmail("")
+      setPassword("")
 
       if (res.data.role === 'user') navigate('/user-dashboard');
       else if (res.data.role === 'admin') navigate('/admin-dashboard');
