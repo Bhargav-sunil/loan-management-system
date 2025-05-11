@@ -4,13 +4,15 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import './UserDashboard.css';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const UserDashboard = () => {
   const { token } = useAuth();
   const [loans, setLoans] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/loans/user', {
+      .get(`${BASE_URL}/api/loans/user`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setLoans(res.data));
