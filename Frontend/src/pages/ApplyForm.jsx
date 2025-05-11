@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const ApplyForm = () => {
   const { token, userName } = useAuth();
   const [form, setForm] = useState({
@@ -18,7 +20,7 @@ const ApplyForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:4000/api/loans/apply', form, {
+    await axios.post(`${BASE_URL}/api/loans/apply`, form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     alert('Loan application submitted');
